@@ -249,6 +249,11 @@ _import_structure = {
         "CanineConfig",
         "CanineTokenizer",
     ],
+    "models.chameleon": [
+        "ChameleonConfig",
+        "ChameleonProcessor",
+        "ChameleonVQVAEConfig",
+    ],
     "models.chinese_clip": [
         "ChineseCLIPConfig",
         "ChineseCLIPProcessor",
@@ -462,6 +467,7 @@ _import_structure = {
         "GroupViTVisionConfig",
     ],
     "models.herbert": ["HerbertTokenizer"],
+    "models.hiera": ["HieraConfig"],
     "models.hubert": ["HubertConfig"],
     "models.ibert": ["IBertConfig"],
     "models.idefics": ["IdeficsConfig"],
@@ -1124,6 +1130,7 @@ else:
     _import_structure["models.bit"].extend(["BitImageProcessor"])
     _import_structure["models.blip"].extend(["BlipImageProcessor"])
     _import_structure["models.bridgetower"].append("BridgeTowerImageProcessor")
+    _import_structure["models.chameleon"].append("ChameleonImageProcessor")
     _import_structure["models.chinese_clip"].extend(["ChineseCLIPFeatureExtractor", "ChineseCLIPImageProcessor"])
     _import_structure["models.clip"].extend(["CLIPFeatureExtractor", "CLIPImageProcessor"])
     _import_structure["models.conditional_detr"].extend(
@@ -1285,6 +1292,7 @@ else:
             "WhisperTimeStampLogitsProcessor",
         ]
     )
+    _import_structure["modeling_flash_attention_utils"] = []
     _import_structure["modeling_outputs"] = []
     _import_structure["modeling_utils"] = ["PreTrainedModel"]
 
@@ -1604,6 +1612,15 @@ else:
             "CanineModel",
             "CaninePreTrainedModel",
             "load_tf_weights_in_canine",
+        ]
+    )
+    _import_structure["models.chameleon"].extend(
+        [
+            "ChameleonForCausalLM",
+            "ChameleonModel",
+            "ChameleonPreTrainedModel",
+            "ChameleonProcessor",
+            "ChameleonVQVAE",
         ]
     )
     _import_structure["models.chinese_clip"].extend(
@@ -2282,6 +2299,15 @@ else:
             "GroupViTPreTrainedModel",
             "GroupViTTextModel",
             "GroupViTVisionModel",
+        ]
+    )
+    _import_structure["models.hiera"].extend(
+        [
+            "HieraBackbone",
+            "HieraForImageClassification",
+            "HieraForPreTraining",
+            "HieraModel",
+            "HieraPreTrainedModel",
         ]
     )
     _import_structure["models.hubert"].extend(
@@ -4879,6 +4905,11 @@ if TYPE_CHECKING:
         CanineConfig,
         CanineTokenizer,
     )
+    from .models.chameleon import (
+        ChameleonConfig,
+        ChameleonProcessor,
+        ChameleonVQVAEConfig,
+    )
     from .models.chinese_clip import (
         ChineseCLIPConfig,
         ChineseCLIPProcessor,
@@ -5111,6 +5142,7 @@ if TYPE_CHECKING:
         GroupViTVisionConfig,
     )
     from .models.herbert import HerbertTokenizer
+    from .models.hiera import HieraConfig
     from .models.hubert import HubertConfig
     from .models.ibert import IBertConfig
     from .models.idefics import (
@@ -5795,6 +5827,7 @@ if TYPE_CHECKING:
         from .models.bit import BitImageProcessor
         from .models.blip import BlipImageProcessor
         from .models.bridgetower import BridgeTowerImageProcessor
+        from .models.chameleon import ChameleonImageProcessor
         from .models.chinese_clip import (
             ChineseCLIPFeatureExtractor,
             ChineseCLIPImageProcessor,
@@ -6241,6 +6274,13 @@ if TYPE_CHECKING:
             CanineModel,
             CaninePreTrainedModel,
             load_tf_weights_in_canine,
+        )
+        from .models.chameleon import (
+            ChameleonForCausalLM,
+            ChameleonModel,
+            ChameleonPreTrainedModel,
+            ChameleonProcessor,
+            ChameleonVQVAE,
         )
         from .models.chinese_clip import (
             ChineseCLIPModel,
@@ -6793,6 +6833,13 @@ if TYPE_CHECKING:
             GroupViTPreTrainedModel,
             GroupViTTextModel,
             GroupViTVisionModel,
+        )
+        from .models.hiera import (
+            HieraBackbone,
+            HieraForImageClassification,
+            HieraForPreTraining,
+            HieraModel,
+            HieraPreTrainedModel,
         )
         from .models.hubert import (
             HubertForCTC,
